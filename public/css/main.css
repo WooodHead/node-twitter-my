@@ -5816,3 +5816,6 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
+
+* {
+  outline: 1px solid #BBB; }

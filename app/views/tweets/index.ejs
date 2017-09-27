@@ -13,6 +13,37 @@
 
   <div class="container">
 
+    <div class="row">
+
+      <div class="col-md-3">
+        <div class="logged-user">
+          <div class="row">
+            <div class="col-xs-4">
+              <img src="https://s3.amazonaws.com/uifaces/faces/twitter/osmond/128.jpg" alt="">
+            </div>
+            <div class="col-xs-8">
+              <h4></h4>
+
+            </div>
+            <div class="col-xs-8"></div>
+          </div>
+        </div>
+
+
+
+        
+        <div class="col-md-6">
+
+        </div>
+        <div class="col-md-3">
+
+        </div>
+      </div>
+
+
+
+    </div>
+
     <h1>tweets</h1>
     <div><a href="/tweets-faker">/tweets-faker</a></div>
     <div><a href="/tweets-clear">/tweets-clear</a></div>
@@ -24,13 +55,17 @@
 
 
     <ul class="pagination">
-        <%- createPagination(pageCount, page) %>
-      </ul>
+      <%- createPagination(pageCount, page) %>
+    </ul>
     <ul>
       <% tweets.forEach(function(item) { %>
         <li>
-          <h4><%- item.title %></h4>
-          <p><%- item.body %></p>
+          <h4>
+            <%- item.title %>
+          </h4>
+          <p>
+            <%- item.body %>
+          </p>
         </li>
         <% }) %>
     </ul>

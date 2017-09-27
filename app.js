@@ -46,7 +46,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(helpers(pkg.name));
 
-console.log('models', models);
 fs.readdirSync(models).forEach(
   file => {
     require(path.join(models, file));
@@ -66,9 +65,6 @@ require('./config/routes')(app);
 // app.use('/', index);
 app.use('/users', users);
 app.use('/api', api);
-
-
-
 
 
 

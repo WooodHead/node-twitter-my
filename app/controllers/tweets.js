@@ -6,6 +6,7 @@ const faker = require('faker')
 
 
 exports.index = co.wrap(function* (req, res) {
+  console.log('exports.index')
   let p = req.query.page
   const page = p && p > 0 ? p : 1;
 
@@ -15,11 +16,15 @@ exports.index = co.wrap(function* (req, res) {
     perPage: perPage,
     page: page
   }
-  const count = yield Tweet.countUserTweets({})
-  console.log('count', count)
-  const list = yield Tweet.list(options)
 
-  const pageCount = Math.ceil(count / perPage)
+
+  var count = yield Tweet.countUserTweets({})
+  console.log('count', count)
+
+  var list = yield Tweet.list(options)
+  console.log('list.length', list.length)
+
+  var pageCount = Math.ceil(count / perPage)
   pageCount = pageCount > 0 ? pageCount : 1
 
   console.log('pageCount', pageCount)
