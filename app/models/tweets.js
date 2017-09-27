@@ -14,6 +14,7 @@ TweetSchema.methods = {
     if (!images || !images.length) {
       return this.save(callback)
     }
+
   }
 };
 

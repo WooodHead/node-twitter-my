@@ -3,8 +3,25 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync');
 var nodemon = require('gulp-nodemon');
-const ejsLint = require('ejs-lint');
+var ejsLint = require('ejs-lint');
+var sass = require('gulp-sass')
 
+var paths = {
+  src: 'src',
+  sass: 'client/**/*.scss',
+  public: 'public'
+
+}
+gulp.task('sass', function () {
+  gulp.src(paths.sass)
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest(paths.public))
+})
+
+gulp.task('watch', function () {
+  gulp.watch([paths.sass], ['sass'])
+  gulp.watch([paths.public + '/**/*.*'], browserSync.reload)
+})
 
 gulp.task('nodemon', function (cb) {
   var started = false;
@@ -19,13 +36,13 @@ gulp.task('nodemon', function (cb) {
 });
 
 
-gulp.task('browser-sync', ['nodemon'], function () {
+gulp.task('browser-sync', ['sass', 'nodemon', 'watch'], function () {
   browserSync.init(null, {
     proxy: "http://localhost:8080",
-    files: ['public/**/*.*', 'views/**/*.*','controller/**/*.*','model/**/*.*','routes/**/.*.*','app/**/*.*'],
+    files: ['public/**/*.*', 'views/**/*.*', 'controller/**/*.*', 'model/**/*.*', 'routes/**/.*.*', 'app/**/*.*'],
     browser: "google chrome",
     port: 7000,
-    open:false
+    open: false
   });
 });
 

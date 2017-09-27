@@ -5819,3 +5819,36 @@ button.close {
 
 * {
   outline: 1px solid #BBB; }
+
+body {
+  background: #141d26; }
+
+#logged-user {
+  background: #1b2836;
+  margin-bottom: 40px; }
+
+#logged-user h4 {
+  color: #FFF; }
+
+#logged-user .user-stat {
+  color: #FFF; }
+
+#logged-user .avatar {
+  width: 100%; }
+
+.test {
+  display: none; }
+
+#footer {
+  padding: 20px;
+  background: #1b2836; }
+
+.tweet-list {
+  margin: 20px 0; }
+
+.tweet-list .tweet-wrap {
+  background: #1b2836;
+  margin-bottom: 20px; }
+
+.tweet-body {
+  color: #FFF; }
