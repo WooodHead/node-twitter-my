@@ -1,9 +1,68 @@
 const mongoose = require('mongoose');
 const Tweet = mongoose.model('Tweet');
 const co = require('co');
+const faker = require('faker')
+
+
+
+exports.index = co.wrap(function* (req, res) {
+  let p = req.query.page
+  const page = p && p > 0 ? p : 1;
+
+  const perPage = 5
+
+  const options = {
+    perPage: perPage,
+    page: page
+  }
+  const count = yield Tweet.countUserTweets({})
+  console.log('count', count)
+  const list = yield Tweet.list(options)
+
+  const pageCount = Math.ceil(count / perPage)
+  pageCount = pageCount > 0 ? pageCount : 1
+
+  console.log('pageCount', pageCount)
+
+  res.render('tweets/index', {
+    tweetCount: count,
+    tweets: list,
+    pageCount: pageCount,
+    page: page
+  });
+
+});
+
+exports.faker = (req, res) => {
+  console.log('faker-------', faker)
+  var params = req.params
+
+  for (let i = 0; i < 30; i++) {
+    const tweet = new Tweet()
+    tweet.title = faker.lorem.sentence()
+    tweet.body = faker.lorem.paragraphs()
+
+    console.log('tweet', tweet)
+
+    tweet.save(err => {
+      if (err) {
+        res.render('error', {
+          error: error
+        })
+      }
+    })
+  }
+  // console.log('redirect')
+  res.redirect('/tweets')
+}
+
+exports.clear = co.wrap(function* (req, res) {
+  yield Tweet.clear({})
+  res.redirect('/tweets')
+})
 
 exports.create = (req, res) => {
-  console.log('req.body', req.body);
+
   const tweet = new Tweet(req.body)
   tweet.uploadAndSave({}, err => {
     if (err) {
@@ -13,40 +72,3 @@ exports.create = (req, res) => {
     }
   })
 }
-
-exports.index = co.wrap(function* (req, res) {
-  let p = req.param('page');
-
-  const page = p > 0 ? p : 1;
-
-  const options = {
-    perPage: 5,
-    page: page
-  }
-
-  const list = yield Tweet.list(options)
-
-  res.render('tweets/index', {
-    tweetCount: 3,
-    tweets: list,
-    pageCount:111,
-    page:2
-  });
-
-
-
-  // Tweet.list(options, (err, tweets) => {
-  //   if (err) {
-  //     return res.render("500")
-  //   }
-
-  //   res.render('tweets/index', {
-
-  //   })
-  // })
-
-  // res.render('tweets/index', {
-  //   tweets:['111','222'],
-  //   tweetCount: 3
-  // })
-});

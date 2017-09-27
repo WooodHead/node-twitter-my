@@ -14,12 +14,9 @@ var helpers = require('view-helpers');
 var pkg = require('./package.json');
 
 var fs = require('fs');
-var paginate = require('express-paginate');
 
 var app = express();
 
-// keep this before all routes that will use pagination
-app.use(paginate.middleware(10, 50));
 
 var connection = mongoose.connect('mongodb://localhost/node_twitter').connection;
 connection.on('error', console.log);
@@ -49,13 +46,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(helpers(pkg.name));
 
-
 console.log('models', models);
 fs.readdirSync(models).forEach(
   file => {
-    console.log('file', file)
     require(path.join(models, file));
-
   }
 );
 

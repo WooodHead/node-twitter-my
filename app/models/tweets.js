@@ -3,6 +3,7 @@ const Schema = mongoose.Schema
 
 
 const TweetSchema = new Schema({
+  title:String,
   body: String,
   tags: Array
 });
@@ -10,23 +11,24 @@ const TweetSchema = new Schema({
 TweetSchema.methods = {
   uploadAndSave: function (images, callback) {
     const self = this;
-    if(!images||!images.length){
+    if (!images || !images.length) {
       return this.save(callback)
     }
-    
   }
 };
 
 TweetSchema.statics = {
-  list: function (options, callback) {
-    // this.find().limit(options.perPage)
-    //   .skip(options.perPage * options.page)
-    //   .exec(callback);
-    
-      return this.find().limit(options.perPage)
-      .skip(options.perPage * options.page)
-      .exec();
+  countUserTweets: function (id, callback) {
+    return this.find().count().exec();
+  },
 
+  list: function (options, callback) {
+    return this.find().limit(options.perPage)
+      .skip(options.perPage * (options.page - 1))
+      .exec();
+  },
+  clear:function (options,callback) {
+    return this.remove().exec()
   }
 };
 
