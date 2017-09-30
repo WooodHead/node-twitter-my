@@ -27,7 +27,9 @@
         <ul class="nav navbar-nav">
           <li class="active"><a href="">Profile</a></li>
           <li><a href="">Profile</a></li>
-          <li><a href="">Profile</a></li>
+          <li><a href=""></a>
+            </a>
+          </li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
@@ -36,12 +38,43 @@
           </li>
         </ul>
 
+        <form action="" class="navbar-form">
+          <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#new-tweet-modal">Tweet</button>
+        </form>
+
       </div>
 
 
 
     </div>
   </nav>
+
+  <div class="modal" id="new-tweet-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+          <h4 class="modal-title">Compose new Tweet</h4>
+        </div>
+
+        <div class="modal-body text-center">
+          <form action="/tweets" method="post">
+
+            <textarea name="body" id="" cols="30" rows="3" placeholder="Enter your tweet hear" ></textarea>
+
+            <button type="submit" class="btn btn-primary">Tweet</button>
+
+          </form>
+
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+  </div>
 
 
   <div class="container">
@@ -79,25 +112,37 @@
         <div class="tweet-list">
 
           <div class="tweet-wrap">
-            <p class="tweet-body">Qui aut porro recusandae suscipit est. Quia dolores consequatur reprehenderit et harum optio voluptatem provident
-              odit.
-            </p>
-            <div class="buttons">
-
-              <button class="btn btn-success">Edit</button>
-              <button class="btn btn-danger">Delete</button>
+            <div class="tweet-body">
+              <div class="row">
+                <div class="col-sm-2">
+                  <img class="tweet-avatar" src="https://s3.amazonaws.com/uifaces/faces/twitter/osmond/128.jpg" alt="">
+                </div>
+                <div class="col-sm-10">
+                  <div class="tweet-date"> Sep 27, 2017</div>
+                  <div class="tweet-content">
+                    Et eos consequatur. Corporis et sit provident. Assumenda qui laboriosam tenetur ducimus ut. Suscipit iste magnam laborum
+                    impedit et. Ipsa quibusdam vel harum ad laudantium. Expedita corrupti aut eos sint atque.
+                  </div>
+                  <div class="tweet-buttons">
+                    <button class="btn btn-sm btn-success btn-edit">Edit</button>
+                    <button class="btn btn-sm btn-danger btn-delete">Delete</button>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div class="comment">
               <textarea rows="3" name="" id="" cols="30" rows="10"></textarea>
-              <button>Comment</button>
+              <button class="btn btn-primary">Comment</button>
             </div>
           </div>
 
         </div>
 
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3 recent">
+
+        <h3>Recent Visites</h3>
 
       </div>
     </div>
@@ -148,6 +193,10 @@
     <p>Code licensed GPL-3.0</p>
 
   </div>
+
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>

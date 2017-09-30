@@ -1,47 +1,88 @@
 @import "lib/bootstrap/bootstrap";
+$bodyColor:#FFF;
+$blockColor:#DDD;
 * {
-  outline: 1px solid #BBB;
+  outline: 1px solid #CCC;
 }
 
-body{
-  background: #141d26;
-}
-
-#logged-user{
-  background: #1b2836;
-  margin-bottom:40px;
-}
-
-#logged-user h4{
-  color:#FFF;  
-}
-#logged-user .user-stat{
-  color:#FFF;
-}
-
-#logged-user .avatar{
-  width:100%;
-}
-
-.test{
+.test {
   display: none;
 }
 
-#footer{
-  padding:20px;
-  background: #1b2836;
+body {
+  background: $bodyColor;
+}
+
+#logged-user {
+  background: $blockColor;
+  margin-bottom: 40px;
+  padding: 20px;
+}
+
+#logged-user .avatar {
+  width: 100%;
+}
+
+
+.tweet-wrap {
+  background: $blockColor;
+  margin-bottom: 20px;
+  padding: 10px 10px;
+}
+
+.tweet-body {
+  margin-bottom: 20px;
+  .tweet-date{
+    color:#666;
+  }
+
+  .tweet-content{
+    margin:5px 0 10px;
+  }
+
+  .tweet-buttons button{
+    border-radius: 15px;
+  }
+}
+
+.tweet-avatar {
+  border-radius: 50%;
+  width: 100%;
+}
+
+.comment {
+  text-align: center;
+  border-top: 1px solid #000;
+  padding-top: 20px;
+  textarea {
+    width: 100%;
+    border-radius: 3px;
+  }
+  button {
+    border-radius: 20px;
+  }
+}
+
+.recent {
+  background: $blockColor; // padding:20px;
+  h3 {
+    // color: #FFF;
+  }
+}
+
+#footer {
+  padding: 20px;
+  background: $blockColor;
+}
+
+
+.modal-body{
   
-}
+  textarea{
+    width:100%;
+  }
 
-.tweet-list{
-
-  margin:20px 0;
-}
-.tweet-list .tweet-wrap{
-  background: #1b2836;  
-  margin-bottom:20px;
-}
-
-.tweet-body{
-  color:#FFF;
+  button{
+    border-radius: 15px;
+  }
 }

@@ -10,7 +10,6 @@ var paths = {
   src: 'src',
   sass: 'client/**/*.scss',
   public: 'public'
-
 }
 gulp.task('sass', function () {
   gulp.src(paths.sass)

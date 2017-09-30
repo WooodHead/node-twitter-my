@@ -5818,37 +5818,59 @@ button.close {
     display: none !important; } }
 
 * {
-  outline: 1px solid #BBB; }
-
-body {
-  background: #141d26; }
-
-#logged-user {
-  background: #1b2836;
-  margin-bottom: 40px; }
-
-#logged-user h4 {
-  color: #FFF; }
-
-#logged-user .user-stat {
-  color: #FFF; }
-
-#logged-user .avatar {
-  width: 100%; }
+  outline: 1px solid #CCC; }
 
 .test {
   display: none; }
 
-#footer {
-  padding: 20px;
-  background: #1b2836; }
+body {
+  background: #FFF; }
 
-.tweet-list {
-  margin: 20px 0; }
+#logged-user {
+  background: #DDD;
+  margin-bottom: 40px;
+  padding: 20px; }
 
-.tweet-list .tweet-wrap {
-  background: #1b2836;
-  margin-bottom: 20px; }
+#logged-user .avatar {
+  width: 100%; }
+
+.tweet-wrap {
+  background: #DDD;
+  margin-bottom: 20px;
+  padding: 10px 10px; }
 
 .tweet-body {
-  color: #FFF; }
+  margin-bottom: 20px; }
+  .tweet-body .tweet-date {
+    color: #666; }
+  .tweet-body .tweet-content {
+    margin: 5px 0 10px; }
+  .tweet-body .tweet-buttons button {
+    border-radius: 15px; }
+
+.tweet-avatar {
+  border-radius: 50%;
+  width: 100%; }
+
+.comment {
+  text-align: center;
+  border-top: 1px solid #000;
+  padding-top: 20px; }
+  .comment textarea {
+    width: 100%;
+    border-radius: 3px; }
+  .comment button {
+    border-radius: 20px; }
+
+.recent {
+  background: #DDD; }
+
+#footer {
+  padding: 20px;
+  background: #DDD; }
+
+.modal-body textarea {
+  width: 100%; }
+
+.modal-body button {
+  border-radius: 15px; }

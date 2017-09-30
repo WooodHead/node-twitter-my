@@ -66,7 +66,10 @@ require('./config/routes')(app);
 app.use('/users', users);
 app.use('/api', api);
 
-
+app.post('/tweets', function (req, res) {
+  console.log('get post ------')
+  res.send('123')
+})
 
 
 // catch 404 and forward to error handler
